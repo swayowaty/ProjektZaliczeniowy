@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="Bg-primary navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+             
+
+
+              
+            </div>
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (Session["UserId"] == null)
+                    {
+
+                        <li>@Html.ActionLink("Zaloguj", "Login", "Uzytkownik")</li>
+                        <li>@Html.ActionLink("Zarejestruj", "Register", "Uzytkownik")</li>
+                        <li>@Html.ActionLink("Przegladaj posty", "Index", "BlogPost")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "LoggedIn", "Uzytkownik")</li>
+                        <li>@Html.ActionLink("Stworz post", "Create", "BlogPost")</li>
+                        <li>@Html.ActionLink("Przegladaj posty", "Index", "BlogPost")</li>
+                        <li>@Html.ActionLink("Zalogowano:" + Session["Username"], "Details", new { id = Session["UserId"] }, "Uzytkownik")</li>
+                        <li>@Html.ActionLink("Wyloguj", "Logout", "Uzytkownik")</li>
+
+                    }
+
+                </ul>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @if (Session["UserId"] != null)
+                {
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("LoggedIn", "Uzytkownik")">Strona Startowa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Create", "BlogPost")">Stworz Post</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "BlogPost")">Przegladaj posty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Details", "Uzytkownik", new { id = Session["UserId"] } )">@Session["Username"]</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Logout", "Uzytkownik")">Wyloguj</a>
+                            </li>
+                        </ul>
+                     </div>
+                     
+
+                   
+
+               
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("Login", "Uzytkownik")">Zaloguj</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Register", "Uzytkownik")">Zarejestruj</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "BlogPost")">Przegladaj posty</a>
+                            </li>
+
+                        </ul>
+
+
+
+                    </div>
+                }
+</div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

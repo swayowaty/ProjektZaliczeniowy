@@ -1,0 +1,50 @@
+﻿@model ProjektZaliczeniowy.Models.BlogPost
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h4>BlogPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Post_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Post_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Podpis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Podpis)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.PostID }) 
+
+</p>

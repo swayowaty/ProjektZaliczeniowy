@@ -1,0 +1,48 @@
+﻿@model PagedList.IPagedList<ProjektZaliczeniowy.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using PagedList.Mvc;
+
+
+
+
+
+@foreach (var item in Model)
+{
+
+<div>
+    <br>
+    <td>
+
+        <button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Edit", "BlogPost", new { id = item.PostID })'">Edytuj</button>
+        <button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Details", "BlogPost", new { id = item.PostID })'">Szczegóły</button>
+        <button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Delete", "BlogPost", new { id = item.PostID })'">Usun</button>
+
+    </td>
+    <br>
+
+    @Html.DisplayFor(modelItem => item.UserID)
+
+
+    &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;   @Html.DisplayFor(modelItem => item.Post_title)
+    <br>
+
+    <img src="@Url.Content(item.Image)"
+    <br>   <br>
+
+
+    @Html.DisplayFor(modelItem => item.Podpis)
+    <br>
+    <br>
+
+
+
+</div>
+
+}
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
+
+

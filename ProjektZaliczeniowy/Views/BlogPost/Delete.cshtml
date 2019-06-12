@@ -1,0 +1,55 @@
+﻿@model ProjektZaliczeniowy.Models.BlogPost
+
+@{
+    ViewBag.Title = "Usun";
+}
+
+
+<h3>Czy na pewno chcesz usunac?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Post_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Post_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Podpis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Podpis)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usun" class="btn btn-primary" /> |
+         
+        </div>
+    }
+</div>
